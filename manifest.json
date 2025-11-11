@@ -1,14 +1,15 @@
 {
-    "display_name": "自定义提示词",
+    "display_name": "总结",
     "loading_order": 5,
     "requires": [],
     "optional": [],
     "js": "index.js",
     "css": "style.css",
     "author": "uhhhh15",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "homePage": ""
 }
+
 
 
 
