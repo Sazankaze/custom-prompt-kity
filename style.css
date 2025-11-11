@@ -576,6 +576,11 @@
     outline: none !important;
     font-size: 1em !important;
     transition: border-color 0.2s ease !important;
+    
+    /* === 新增以下属性，使其样式完整 === */
+    background-color: #fff !important;  /* 明确指定背景色 */
+    color: #333 !important;             /* 明确指定文字颜色 */
+    font-family: var(--chatFontFamily), sans-serif !important; /* 统一字体 */
 }
 
 #migrationModal .migration-input:focus {
