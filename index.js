@@ -3,8 +3,6 @@
 // This version is refactored to manage and inject per-chat custom prompts.
 
 // --- SillyTavern Core Imports ---
-// index.js (Custom Prompt Injector Plugin)
-// ... (lines 1-5)
 import {
     eventSource,
     event_types,
@@ -1022,3 +1020,4 @@ jQuery(async () => {
         console.error(`[${pluginName}] Initialization failed:`, error);
     }
 });
+
