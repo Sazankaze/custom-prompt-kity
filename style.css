@@ -233,7 +233,7 @@
     resize: none; /* 禁止缩放 */
     padding-top: 10px;
     padding-right: 10px;
-    padding-left: 10px
+    padding-left: 10px;
     border-radius: 8px;
     border: 1px solid #e0e0e0 !important;
     background-color: #f9f9f9 !important;
@@ -336,9 +336,7 @@
 /* ================================================================== */
 
 #presetEditorModal {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: none; /* Changed from flex to none */
     position: fixed !important;
     z-index: 10002 !important; /* Must be higher than the main modal */
     left: 0 !important;
@@ -353,21 +351,23 @@
 }
 
 #presetEditorModal .preset-editor-dialog {
+    position: fixed; /* Added for JS positioning */
+    z-index: 10002; /* Added to ensure it's above its backdrop */
     background: #ffffff !important;
     color: #333 !important;
     border-radius: 12px !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
     width: 600px !important;
     max-width: 90vw !important;
-    
+
     height: 500px; /* 为Flexbox提供一个基础高度，让flex-grow生效 */
     max-height: 85vh; /* 保留此行，作为响应式高度上限，防止在小屏幕上超出 */
-    
+
     display: flex !important;
     flex-direction: column !important;
     overflow: hidden !important;
     transform: scale(0.95) !important;
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0s, left 0s !important; /* Added transition ignore for top/left */
 }
 
 #presetEditorModal.visible {
@@ -486,24 +486,12 @@
     background-color: #00bfff !important;
 }
 
-
-/* --- NEW: Media Query for Mobile Responsiveness --- */
-@media (max-width: 768px) {
-    #presetEditorModal {
-        /* 从垂直居中改为顶部对齐，为虚拟键盘留出空间 */
-        align-items: flex-start !important;
-        padding-top: 5vh !important; /* 增加一个距顶部的安全边距 */
-    }
-}
-
 /* ================================================================== */
 /*           NEW: MIGRATION MODAL STYLES                              */
 /* ================================================================== */
 
 #migrationModal {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    display: none; /* Changed from flex to none */
     position: fixed !important;
     z-index: 10003 !important; /* Higher than preset editor */
     left: 0 !important;
@@ -521,6 +509,8 @@
 }
 
 #migrationModal .migration-dialog {
+    position: fixed; /* Added for JS positioning */
+    z-index: 10003; /* Added to ensure it's above its backdrop */
     background: #ffffff !important;
     color: #333 !important;
     border-radius: 12px !important;
@@ -530,7 +520,7 @@
     display: flex !important;
     flex-direction: column !important;
     transform: scale(0.95) !important;
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0s, left 0s !important; /* Added transition ignore for top/left */
 }
 
 #migrationModal.visible .migration-dialog {
@@ -627,15 +617,4 @@
     background-color: #00bfff !important;
 }
 
-
-/* ================================================================== */
-/*           NEW: MIGRATION MODAL MOBILE RESPONSIVENESS               */
-/* ================================================================== */
-
-@media (max-width: 768px) {
-    #migrationModal {
-        /* 从垂直居中改为顶部对齐，为虚拟键盘留出空间 */
-        align-items: flex-start !important;
-        padding-top: 5vh !important; /* 增加一个距顶部的安全边距 */
-    }
-}
+/* --- 以下所有 @media 查询块已被完全删除，以确保弹窗在所有设备上都垂直居中 --- */
