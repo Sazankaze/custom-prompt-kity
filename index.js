@@ -11,14 +11,13 @@ import {
     chat,
     getRequestHeaders,
     saveSettingsDebounced,
-    extension_prompt_types, // <-- 新增
-    extension_prompt_roles, // <-- 新增
+    extension_prompt_types, 
+    extension_prompt_roles,
     doNewChat,
     renameChat,
     openCharacterChat,
-    deleteMessage,
     reloadCurrentChat,
-    saveChatConditional, // <-- 新增
+    saveChatConditional,
 } from '../../../../script.js';
 // ...
 import {
@@ -348,7 +347,8 @@ async function handleMigration(newChatName) {
         // 【步骤 5】在新聊天中执行迁移操作
         // 此时全局的 'chat' 变量已指向新聊天
         if (chat.length > 0) {
-            await deleteMessage(0); // 删除新聊天的初始问候语
+            // await deleteMessage(0); // 删除新聊天的初始问候语
+            chat.splice(0, 1); // 直接操作数组，移除第一个元素，以兼容旧版环境
         }
         
         // 使用我们之前安全过滤好的 'filteredHistory'
@@ -990,6 +990,7 @@ async function saveAllDirtyChanges() {
 // =================================================================
 jQuery(async () => {
     try {
+        // 【最终修正】参考 AI指引助手 脚本，定义符合扩展菜单列表的按钮HTML
         // 1. 使用 'list-group-item flex-container flexGap5 interactable' 类，这是SillyTavern扩展菜单项的标准样式。
         // 2. 保持图标 <i> 和文字 <span> 的结构，使其与菜单中其他项保持一致。
         const buttonHtml = `
