@@ -990,31 +990,34 @@ async function saveAllDirtyChanges() {
 // =================================================================
 jQuery(async () => {
     try {
-        // 定义正确的按钮HTML，使用 'input_button' 类以匹配目标容器的样式
+        // 1. 使用 'list-group-item flex-container flexGap5 interactable' 类，这是SillyTavern扩展菜单项的标准样式。
+        // 2. 保持图标 <i> 和文字 <span> 的结构，使其与菜单中其他项保持一致。
         const buttonHtml = `
-            <div id="custom_prompt_button" class="input_button" title="自定义提示词">
+            <div id="custom_prompt_button" class="list-group-item flex-container flexGap5 interactable" title="管理所有聊天的自定义提示词">
                 <i class="fa-solid fa-scroll"></i>
                 <span>总结</span>
             </div>
         `;
 
-        // 将按钮注入到您指定的正确容器 '#data_bank_wand_container'
-        $('#data_bank_wand_container').append(buttonHtml);
+        // 【最终修正】将按钮注入到 '#extensionsMenu' 内部。
+        // '#extensionsMenu' 是点击顶部“扩展”按钮后弹出的那个菜单容器的ID。
+        // 使用 .append() 会将按钮作为最后一个菜单项添加进去。
+        $('#extensionsMenu').append(buttonHtml);
 
-        // 为新创建的按钮绑定点击事件
+        // 为新创建的按钮绑定点击事件 (此部分逻辑无需更改)
         $('#custom_prompt_button').on('click', openPromptModal);
         
-        // 监听聊天变化以应用正确的提示词
+        // 监听聊天变化以应用正确的提示词 (此部分逻辑无需更改)
         eventSource.on(event_types.CHAT_CHANGED, () => {
             // 为新加载的聊天应用提示词
             applyOrClearCustomPrompt();
         });
 
-        // 为当前打开的聊天进行首次提示词应用
+        // 为当前打开的聊天进行首次提示词应用 (此部分逻辑无需更改)
         applyOrClearCustomPrompt();
 
         console.log(`[${pluginName}] Plugin loaded successfully.`);
-    } catch (error) { // <-- 这里是修正点，添加了花括号
+    } catch (error) {
         console.error(`[${pluginName}] Initialization failed:`, error);
     }
 });
