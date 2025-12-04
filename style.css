@@ -139,7 +139,7 @@
     font-size: 16px;
 }
 
-/* --- Enable/Disable Toggle Switch --- */
+/* --- Enable/Disable Toggle Switch (Frosted Glass Style) --- */
 .prompt-injector-toggle-container {
     display: flex;
     align-items: center;
@@ -166,9 +166,12 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background: rgba(180, 180, 180, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(200, 200, 200, 0.5);
     border-radius: 24px;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .prompt-injector-toggle-slider::before {
@@ -176,29 +179,36 @@
     content: "";
     height: 18px;
     width: 18px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
+    left: 2px;
+    bottom: 2px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
     border-radius: 50%;
-    transition: transform 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
 .prompt-injector-toggle-switch input:checked + .prompt-injector-toggle-slider {
-    background: linear-gradient(120deg, #41d1ff, #bd34fe);
-    box-shadow: 0 0 8px rgba(65, 209, 255, 0.4);
+    background: rgba(40, 40, 40, 0.6);
+    border-color: rgba(80, 80, 80, 0.6);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
 }
 
 .prompt-injector-toggle-switch input:checked + .prompt-injector-toggle-slider::before {
     transform: translateX(20px);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .prompt-injector-toggle-switch:hover .prompt-injector-toggle-slider {
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+    border-color: rgba(150, 150, 150, 0.7);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
 .prompt-injector-toggle-switch input:checked + .prompt-injector-toggle-slider:hover {
-    box-shadow: 0 0 10px rgba(65, 209, 255, 0.5);
+    border-color: rgba(100, 100, 100, 0.8);
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.25);
 }
 
 

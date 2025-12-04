@@ -1,11 +1,11 @@
 {
-    "display_name": "总结",
+    "display_name": "总结 *.+小猫版",
     "loading_order": 5,
     "requires": [],
     "optional": [],
     "js": "index.js",
     "css": "style.css",
-    "author": "uhhhh15",
+    "author": "Original: uhhhh15; Modified by: Sazankaze",
     "version": "1.5.0",
     "homePage": ""
 }
