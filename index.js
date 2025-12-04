@@ -1052,8 +1052,8 @@ jQuery(async () => {
         // 2. 保持图标 <i> 和文字 <span> 的结构，使其与菜单中其他项保持一致。
         const buttonHtml = `
             <div id="custom_prompt_button" class="list-group-item flex-container flexGap5 interactable" title="管理所有聊天的自定义提示词">
-                <i class="fa-solid fa-scroll"></i>
-                <span>总结</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 8 8"><path fill="currentColor" d="M7 3h1V0H7v1H6v1h1ZM1 8h1V7H1ZM0 7h1V3H0Zm2 2h5V8H2Zm0-4h1V4H2Zm1 2h3V6H5V5H4v1H3Zm4 1h1V7H7ZM1 3h1V2h1V1H2V0H1Zm5 2h1V4H6ZM3 3h3V2H3Zm5 4h1V3H8Zm0 0"/></svg>
+                <span>总结 *.+小猫版</span>
             </div>
         `;
 

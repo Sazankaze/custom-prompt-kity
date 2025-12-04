@@ -1,5 +1,5 @@
 /* style.css (Custom Prompt Injector Plugin) */
-/* This plugin uses only the light theme. All dark theme styles have been removed. */
+/* Frosted Glass (Black & White) Theme */
 
 /* --- Hide scrollbars ONLY within the plugin's components --- */
 #promptInjectorModal ::-webkit-scrollbar {
@@ -25,22 +25,26 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6) !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 /* ================================================================== */
-/*                      LIGHT THEME (DEFAULT)                         */
+/*                      FROSTED GLASS THEME                           */
 /* ================================================================== */
 
-/* --- Modal Dialog (LIGHT) --- */
+/* --- Modal Dialog (Frosted Glass) --- */
 .prompt-injector-modal-dialog {
-    background: #ffffff !important;
-    color: #333 !important;
-    border: 1px solid rgba(221, 221, 221, 0.5) !important;
-    border-radius: 16px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    color: #1a1a1a !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 20px;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
     width: 900px;
     max-width: 95vw;
     height: 85vh;
@@ -58,88 +62,91 @@
     transform: scale(1);
 }
 
-/* --- Modal Header (LIGHT) --- */
+/* --- Modal Header (Frosted Glass) --- */
 .prompt-injector-modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px 12px !important;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+    padding: 12px 16px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
     flex-shrink: 0;
-    background: rgba(255, 255, 255, 1) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     gap: 10px;
 }
 .prompt-injector-sidebar-toggle {
-    background: transparent !important;
-    border: none !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
     cursor: pointer;
     padding: 0 !important;
     border-radius: 50%;
     width: 40px;
     height: 40px;
     object-fit: cover;
-    transition: transform 0.4s ease-out !important;
+    transition: transform 0.4s ease-out, background 0.2s ease !important;
     transform: rotate(0deg);
     flex-shrink: 0;
-    /* === 新增：移除移动端触摸高亮和焦点轮廓 === */
     -webkit-tap-highlight-color: transparent;
     outline: none;
+}
+.prompt-injector-sidebar-toggle:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
 }
 .prompt-injector-modal-dialog:not(.sidebar-closed) .prompt-injector-sidebar-toggle {
     transform: rotate(360deg) !important;
 }
 .prompt-injector-modal-title {
     margin: 0;
-    font-weight: 600;
-    font-size: 16px;
+    font-weight: 700;
+    font-size: 17px;
     flex-grow: 1;
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     user-select: none;
-
-    /* === 以下是实现文字渐变效果的关键 === */
-    color: transparent !important; /* 首先将文字颜色设为透明 */
-    background: -webkit-linear-gradient(120deg, #bd34fe, #41d1ff) !important; /* 设置渐变背景 */
-    -webkit-background-clip: text !important; /* 将背景裁剪为文字形状 */
-    background-clip: text !important; /* 标准语法，增强兼容性 */
+    color: #1a1a1a !important;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
 }
 .prompt-injector-modal-close-x {
     cursor: pointer;
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: transparent !important;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    background: rgba(0, 0, 0, 0.08) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
     flex-shrink: 0;
 }
 .prompt-injector-modal-close-x:hover {
-    background-color: #e0e0e0 !important;
+    background: rgba(0, 0, 0, 0.15) !important;
     transform: rotate(90deg);
 }
 .prompt-injector-modal-close-x i {
-    color: #555 !important;
-    font-size: 16px;
+    color: #333 !important;
+    font-size: 15px;
 }
 
 #prompt-injector-migrate-btn {
     transform: rotate(180deg);
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: all 0.2s ease;
 }
 #prompt-injector-migrate-btn:hover {
-    background-color: #e0e0e0 !important;
-    transform: rotate(180deg) scale(1.1);
+    background: rgba(0, 0, 0, 0.15) !important;
+    transform: rotate(180deg) scale(1.08);
 }
 #prompt-injector-migrate-btn i {
-    color: #555 !important;
-    font-size: 16px;
+    color: #333 !important;
+    font-size: 15px;
 }
 
-/* --- Enable/Disable Toggle Switch (Frosted Glass Style) --- */
+/* --- Enable/Disable Toggle Switch (Frosted Glass) --- */
 .prompt-injector-toggle-container {
     display: flex;
     align-items: center;
@@ -149,8 +156,8 @@
 .prompt-injector-toggle-switch {
     position: relative;
     display: inline-block;
-    width: 44px;
-    height: 24px;
+    width: 48px;
+    height: 26px;
     cursor: pointer;
 }
 
@@ -166,49 +173,47 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(180, 180, 180, 0.4);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(200, 200, 200, 0.5);
-    border-radius: 24px;
+    background: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 26px;
     transition: all 0.3s ease;
 }
 
 .prompt-injector-toggle-slider::before {
     position: absolute;
     content: "";
-    height: 18px;
-    width: 18px;
+    height: 20px;
+    width: 20px;
     left: 2px;
     bottom: 2px;
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 50%;
-    transition: transform 0.3s ease, background 0.3s ease;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .prompt-injector-toggle-switch input:checked + .prompt-injector-toggle-slider {
-    background: rgba(40, 40, 40, 0.6);
-    border-color: rgba(80, 80, 80, 0.6);
-    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    background: rgba(30, 30, 30, 0.7);
+    border-color: rgba(60, 60, 60, 0.5);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .prompt-injector-toggle-switch input:checked + .prompt-injector-toggle-slider::before {
-    transform: translateX(20px);
+    transform: translateX(22px);
     background: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .prompt-injector-toggle-switch:hover .prompt-injector-toggle-slider {
-    border-color: rgba(150, 150, 150, 0.7);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
 }
 
 .prompt-injector-toggle-switch input:checked + .prompt-injector-toggle-slider:hover {
-    border-color: rgba(100, 100, 100, 0.8);
-    box-shadow: 0 0 14px rgba(0, 0, 0, 0.25);
+    border-color: rgba(80, 80, 80, 0.6);
 }
 
 
@@ -221,16 +226,18 @@
     min-height: 0;
 }
 
-/* --- Two-Panel Layout (LIGHT) --- */
+/* --- Two-Panel Layout (Frosted Glass) --- */
 .prompt-chat-list-panel {
-    width: 195px !important;
+    width: 200px !important;
     flex-shrink: 0;
-    border-right: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.15) !important;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     transition: width 0.3s ease, margin-left 0.3s ease, opacity 0.3s ease;
-    background: rgba(255, 255, 255, 0.95) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 .prompt-injector-modal-dialog.sidebar-closed .prompt-chat-list-panel {
     width: 0 !important;
@@ -241,27 +248,32 @@
 }
 .prompt-chat-list-items {
     overflow-y: auto;
-    padding: 8px;
+    padding: 10px;
     flex-grow: 1;
 }
 .prompt-chat-list-item {
-    padding: 10px 12px;
+    padding: 11px 14px;
     cursor: pointer;
-    border-radius: 6px;
-    margin-bottom: 4px;
+    border-radius: 10px;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    color: #333 !important;
+    transition: all 0.2s ease;
+    color: #2a2a2a !important;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid transparent;
 }
 .prompt-chat-list-item:hover {
-    background-color: rgba(0, 0, 0, 0.05) !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-color: rgba(255, 255, 255, 0.3);
 }
 .prompt-chat-list-item.active {
-    background-color: #e3f2fd !important;
+    background: rgba(0, 0, 0, 0.12) !important;
+    border-color: rgba(0, 0, 0, 0.15);
     font-weight: 600;
-    color: #1565c0 !important;
+    color: #1a1a1a !important;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 .chat-list-item-name {
     flex-grow: 1;
@@ -273,7 +285,7 @@
 .chat-list-item-indicator {
     flex-shrink: 0;
     font-size: 1.1em;
-    color: #2ecc71;
+    color: #1a1a1a;
     font-weight: bold;
 }
 .prompt-main-panel {
@@ -281,20 +293,20 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: rgba(255, 255, 255, 1) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
 }
 
-/* --- NEW: Prompt Editor Styles (LIGHT) --- */
+/* --- Prompt Editor Styles (Frosted Glass) --- */
 .prompt-editor-container {
     display: flex;
     flex-direction: column;
     height: 100%;
     padding: 16px;
-    gap: 12px;
+    gap: 14px;
 }
 .prompt-editor-label {
     font-size: 13px;
-    color: #555;
+    color: #333;
     font-weight: 600;
     margin: 0 0 -5px 4px;
     user-select: none;
@@ -302,54 +314,65 @@
 #preset-prompt-textarea {
     width: 100% !important;
     box-sizing: border-box !important;
-    resize: none; /* 禁止缩放 */
-    padding-top: 10px;
-    padding-right: 10px;
-    padding-left: 10px;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0 !important;
-    background-color: #f9f9f9 !important;
-    color: #444 !important;
+    resize: none;
+    padding: 11px 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #2a2a2a !important;
     font-family: var(--chatFontFamily) !important;
     font-size: 0.9em !important;
     outline: none;
-    transition: border-color 0.2s ease, background-color 0.2s ease;
-    min-height: 0; /* 移除最小高度 */
-    height: 40px; /* 设置固定高度 */
-    line-height: 18px; /* 精确控制行高实现垂直居中 (40px height - 2*10px padding - 2*1px border) */
-    cursor: pointer; /* 添加手型光标 */
-    overflow: hidden; /* 隐藏溢出内容 */
-    white-space: nowrap; /* 强制不换行 */
-    text-overflow: ellipsis; /* 溢出时显示省略号 */
+    transition: all 0.2s ease;
+    min-height: 0;
+    height: 44px;
+    line-height: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#preset-prompt-textarea:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
 }
 #preset-prompt-textarea:focus {
-    border-color: #a2a2a2 !important;
-    background-color: #fff !important;
+    border-color: rgba(0, 0, 0, 0.25) !important;
+    background: rgba(255, 255, 255, 0.4) !important;
 }
 #custom-prompt-textarea {
     flex-grow: 1;
     width: 100% !important;
     box-sizing: border-box !important;
     resize: vertical;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ddd !important;
-    background-color: #fff !important;
-    color: #333 !important;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #1a1a1a !important;
     font-family: var(--chatFontFamily) !important;
     font-size: 1em !important;
     outline: none;
-    transition: border-color 0.2s ease;
+    transition: all 0.2s ease;
+}
+#custom-prompt-textarea:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
 }
 #custom-prompt-textarea:focus {
-    border-color: #41d1ff !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    background: rgba(255, 255, 255, 0.35) !important;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
 }
 
-/* --- NEW: Quick Add Input (LIGHT) --- */
+/* --- Quick Add Input (Frosted Glass) --- */
 .quick-add-container {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
     margin-top: 8px;
     flex-shrink: 0;
 }
@@ -357,43 +380,53 @@
     flex-grow: 1;
     box-sizing: border-box !important;
     resize: none;
-    padding: 8px 12px;
-    border-radius: 20px;
-    border: 1px solid #ccc !important;
-    background-color: #fff !important;
-    color: #333 !important;
+    padding: 10px 16px;
+    border-radius: 22px;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #1a1a1a !important;
     font-family: var(--chatFontFamily) !important;
     font-size: 0.95em !important;
     outline: none;
-    transition: border-color 0.2s ease;
-    height: 40px;
+    transition: all 0.2s ease;
+    height: 44px;
     line-height: 1.5;
-    max-height: 120px; /* 允许最多扩展几行 */
+    max-height: 120px;
+}
+#quick-add-textarea:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
 }
 #quick-add-textarea:focus {
-    border-color: #41d1ff !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    background: rgba(255, 255, 255, 0.4) !important;
 }
 #quick-add-button {
     flex-shrink: 0;
-    width: 38px;
-    height: 38px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    border: none;
-    background-color: #41d1ff !important;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    background: rgba(30, 30, 30, 0.7) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     color: white !important;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: all 0.2s ease;
     font-size: 16px;
 }
 #quick-add-button:hover {
-    background-color: #00bfff !important;
+    background: rgba(0, 0, 0, 0.8) !important;
     transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 #quick-add-button:disabled {
-    background-color: #e0e0e0 !important;
+    background: rgba(150, 150, 150, 0.3) !important;
+    border-color: rgba(0, 0, 0, 0.05);
     cursor: not-allowed;
 }
 
@@ -404,42 +437,45 @@
 
 
 /* ================================================================== */
-/*           NEW: CUSTOM PRESET EDITOR MODAL STYLES                   */
+/*           PRESET EDITOR MODAL (Frosted Glass)                      */
 /* ================================================================== */
 
 #presetEditorModal {
-    display: none; /* Changed from flex to none */
+    display: none;
     position: fixed !important;
-    z-index: 10002 !important; /* Must be higher than the main modal */
+    z-index: 10002 !important;
     left: 0 !important;
     top: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    backdrop-filter: blur(5px) !important;
-    -webkit-backdrop-filter: blur(5px) !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     opacity: 0 !important;
     transition: opacity 0.2s ease-in-out !important;
 }
 
 #presetEditorModal .preset-editor-dialog {
-    position: fixed; /* Added for JS positioning */
-    z-index: 10002; /* Added to ensure it's above its backdrop */
-    background: #ffffff !important;
-    color: #333 !important;
-    border-radius: 12px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    position: fixed;
+    z-index: 10002;
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    color: #1a1a1a !important;
+    border-radius: 18px !important;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
     width: 600px !important;
     max-width: 90vw !important;
-
-    height: 500px; /* 为Flexbox提供一个基础高度，让flex-grow生效 */
-    max-height: 85vh; /* 保留此行，作为响应式高度上限，防止在小屏幕上超出 */
-
+    height: 500px;
+    max-height: 85vh;
     display: flex !important;
     flex-direction: column !important;
     overflow: hidden !important;
     transform: scale(0.95) !important;
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0s, left 0s !important; /* Added transition ignore for top/left */
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0s, left 0s !important;
 }
 
 #presetEditorModal.visible {
@@ -454,53 +490,69 @@
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 12px 16px !important;
-    border-bottom: 1px solid #e0e0e0 !important;
+    padding: 14px 18px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
     flex-shrink: 0 !important;
+    background: rgba(255, 255, 255, 0.1) !important;
 }
 
 #presetEditorModal .preset-editor-title {
     margin: 0 !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     font-size: 16px !important;
+    color: #1a1a1a !important;
 }
 
 #presetEditorModal .preset-editor-close-x {
     cursor: pointer !important;
-    color: #888 !important;
-    font-size: 20px !important;
+    color: #444 !important;
+    font-size: 22px !important;
     line-height: 1 !important;
     transition: transform 0.2s ease !important;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.08);
 }
 #presetEditorModal .preset-editor-close-x:hover {
     transform: rotate(90deg) !important;
+    background: rgba(0, 0, 0, 0.15);
 }
 
 #presetEditorModal .preset-editor-body {
-    padding: 16px !important;
+    padding: 18px !important;
     flex-grow: 1 !important;
-    display: flex; /* 使其成为flex容器 */
-    flex-direction: column; /* 确保内部元素垂直排列 */
-    min-height: 0; /* Flexbox hack，防止内容溢出问题 */
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
 }
 
 #presetEditorModal .preset-editor-textarea {
     width: 100% !important;
-    flex-grow: 1; /* 让文本域自动伸缩以填充剩余空间 */
+    flex-grow: 1;
     box-sizing: border-box !important;
     resize: vertical !important;
-    padding: 12px !important;
-    border-radius: 8px !important;
-    border: 1px solid #ddd !important;
-    background-color: #fff !important;
-    color: #333 !important;
+    padding: 14px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #1a1a1a !important;
     font-family: var(--chatFontFamily) !important;
     font-size: 1em !important;
     outline: none !important;
-    transition: border-color 0.2s ease !important;
+    transition: all 0.2s ease !important;
+}
+#presetEditorModal .preset-editor-textarea:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
 }
 #presetEditorModal .preset-editor-textarea:focus {
-    border-color: #41d1ff !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    background: rgba(255, 255, 255, 0.4) !important;
 }
 
 #presetEditorModal .preset-editor-textarea::-webkit-scrollbar {
@@ -511,67 +563,70 @@
     border-radius: 4px !important;
 }
 #presetEditorModal .preset-editor-textarea::-webkit-scrollbar-thumb {
-    background-color: #41d1ff !important;
+    background-color: rgba(0, 0, 0, 0.25) !important;
     border-radius: 4px !important;
     border: 2px solid transparent !important;
     background-clip: content-box !important;
 }
 #presetEditorModal .preset-editor-textarea::-webkit-scrollbar-thumb:hover {
-    background-color: #41d1ff !important;
+    background-color: rgba(0, 0, 0, 0.35) !important;
 }
 
 #presetEditorModal .preset-editor-footer {
     display: flex !important;
     justify-content: center !important;
-    gap: 10px !important;
-    padding-right: 16px !important;
-    padding-bottom: 12px !important;
-    padding-left: 16px !important;
-    background-color: #f9f9f9 !important;
+    gap: 12px !important;
+    padding: 0 18px 16px 18px !important;
+    background: transparent !important;
 }
 
 #presetEditorModal .preset-editor-button {
-    padding: 8px 16px !important;
-    border: none !important;
-    border-radius: 6px !important;
+    padding: 10px 24px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 10px !important;
     cursor: pointer !important;
     font-weight: 600 !important;
-    transition: background-color 0.2s ease, transform 0.1s ease !important;
+    transition: all 0.2s ease !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 #presetEditorModal .preset-editor-button:active {
     transform: scale(0.97) !important;
 }
 
 #presetEditorModal .preset-editor-button.cancel {
-    background-color: #e0e0e0 !important;
-    color: #555 !important;
+    background: rgba(200, 200, 200, 0.4) !important;
+    color: #333 !important;
 }
 #presetEditorModal .preset-editor-button.cancel:hover {
-    background-color: #d0d0d0 !important;
+    background: rgba(180, 180, 180, 0.5) !important;
 }
 
 #presetEditorModal .preset-editor-button.save {
-    background-color: #41d1ff !important;
+    background: rgba(30, 30, 30, 0.7) !important;
     color: white !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
 }
 #presetEditorModal .preset-editor-button.save:hover {
-    background-color: #00bfff !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
 /* ================================================================== */
-/*           NEW: MIGRATION MODAL STYLES                              */
+/*           MIGRATION MODAL (Frosted Glass)                          */
 /* ================================================================== */
 
 #migrationModal {
-    display: none; /* Changed from flex to none */
+    display: none;
     position: fixed !important;
-    z-index: 10003 !important; /* Higher than preset editor */
+    z-index: 10003 !important;
     left: 0 !important;
     top: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    backdrop-filter: blur(5px) !important;
+    background-color: rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     opacity: 0 !important;
     transition: opacity 0.2s ease-in-out !important;
 }
@@ -581,18 +636,23 @@
 }
 
 #migrationModal .migration-dialog {
-    position: fixed; /* Added for JS positioning */
-    z-index: 10003; /* Added to ensure it's above its backdrop */
-    background: #ffffff !important;
-    color: #333 !important;
-    border-radius: 12px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+    position: fixed;
+    z-index: 10003;
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    color: #1a1a1a !important;
+    border-radius: 18px !important;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
     width: 450px !important;
     max-width: 90vw !important;
     display: flex !important;
     flex-direction: column !important;
     transform: scale(0.95) !important;
-    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0s, left 0s !important; /* Added transition ignore for top/left */
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), top 0s, left 0s !important;
 }
 
 #migrationModal.visible .migration-dialog {
@@ -603,95 +663,139 @@
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
-    padding: 12px 16px !important;
-    border-bottom: 1px solid #e0e0e0 !important;
+    padding: 14px 18px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
     flex-shrink: 0 !important;
+    background: rgba(255, 255, 255, 0.1) !important;
 }
 
 #migrationModal .migration-title {
     margin: 0 !important;
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     font-size: 16px !important;
+    color: #1a1a1a !important;
 }
 
 #migrationModal .migration-close-x {
     cursor: pointer !important;
-    color: #888 !important;
-    font-size: 20px !important;
+    color: #444 !important;
+    font-size: 22px !important;
     line-height: 1 !important;
     transition: transform 0.2s ease !important;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.08);
 }
 #migrationModal .migration-close-x:hover {
     transform: rotate(90deg) !important;
+    background: rgba(0, 0, 0, 0.15);
 }
 
 #migrationModal .migration-body {
-    padding: 16px !important;
+    padding: 18px !important;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
 }
 
 #migrationModal .migration-body p {
     margin: 0 !important;
     font-size: 14px;
-    line-height: 1.5;
-    color: #555;
+    line-height: 1.6;
+    color: #333;
 }
 
 #migrationModal .migration-input {
     width: 100% !important;
     box-sizing: border-box !important;
-    padding: 10px 12px !important;
-    border-radius: 6px !important;
-    border: 1px solid #ccc !important;
+    padding: 12px 16px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
     outline: none !important;
     font-size: 1em !important;
-    transition: border-color 0.2s ease !important;
-    
-    /* === 新增以下属性，使其样式完整 === */
-    background-color: #fff !important;  /* 明确指定背景色 */
-    color: #333 !important;             /* 明确指定文字颜色 */
-    font-family: var(--chatFontFamily), sans-serif !important; /* 统一字体 */
+    transition: all 0.2s ease !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #1a1a1a !important;
+    font-family: var(--chatFontFamily), sans-serif !important;
 }
-
+#migrationModal .migration-input:hover {
+    background: rgba(255, 255, 255, 0.35) !important;
+}
 #migrationModal .migration-input:focus {
-    border-color: #41d1ff !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
+    background: rgba(255, 255, 255, 0.4) !important;
 }
 
 #migrationModal .migration-footer {
     display: flex !important;
     justify-content: center !important;
-    gap: 10px !important;
-    padding: 0 16px 12px 16px !important;
+    gap: 12px !important;
+    padding: 0 18px 16px 18px !important;
 }
 
 #migrationModal .migration-button {
-    padding: 8px 16px !important;
-    border: none !important;
-    border-radius: 6px !important;
+    padding: 10px 24px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 10px !important;
     cursor: pointer !important;
     font-weight: 600 !important;
-    transition: background-color 0.2s ease, transform 0.1s ease !important;
+    transition: all 0.2s ease !important;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 #migrationModal .migration-button:active {
     transform: scale(0.97) !important;
 }
 
 #migrationModal .migration-button.cancel {
-    background-color: #e0e0e0 !important;
-    color: #555 !important;
+    background: rgba(200, 200, 200, 0.4) !important;
+    color: #333 !important;
 }
 #migrationModal .migration-button.cancel:hover {
-    background-color: #d0d0d0 !important;
+    background: rgba(180, 180, 180, 0.5) !important;
 }
 
 #migrationModal .migration-button.confirm {
-    background-color: #41d1ff !important;
+    background: rgba(30, 30, 30, 0.7) !important;
     color: white !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
 }
 #migrationModal .migration-button.confirm:hover {
-    background-color: #00bfff !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
 }
 
-/* --- 以下所有 @media 查询块已被完全删除，以确保弹窗在所有设备上都垂直居中 --- */
+/* --- Loader Spinner (Frosted Glass) --- */
+.chat-list-loader {
+    text-align: center;
+    padding: 12px;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    margin: 40px auto;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.prompt-empty {
+    text-align: center;
+    padding: 40px;
+    color: #555;
+    font-size: 1em;
+}
