@@ -89,6 +89,25 @@ function applyOrClearCustomPrompt() {
         const context = getContext();
         if (!context || !context.chatMetadata) return;
 
+        const injectionKey = 'custom_prompt_injector_main';
+        
+        // Check if the plugin is enabled
+        const isEnabled = extension_settings[pluginName]?.enabled !== false;
+        
+        if (!isEnabled) {
+            // If disabled, clear any existing injection
+            context.setExtensionPrompt(
+                injectionKey,
+                '',
+                extension_prompt_types.IN_CHAT,
+                5000,
+                false,
+                extension_prompt_roles.SYSTEM
+            );
+            console.log(`[${pluginName}] Plugin disabled, cleared injection for chat: ${context.chatId}`);
+            return;
+        }
+
         // Get per-chat content for the macro
         const promptData = context.chatMetadata[METADATA_KEY];
         const perChatContent = promptData?.prompt || '';
@@ -105,8 +124,6 @@ function applyOrClearCustomPrompt() {
             // Otherwise, just use the per-chat content directly
             finalPrompt = perChatContent;
         }
-
-        const injectionKey = 'custom_prompt_injector_main';
 
         if (finalPrompt.trim() !== '') {
             context.setExtensionPrompt(
@@ -149,6 +166,12 @@ function ensureModalStructure() {
             <div class="${MODAL_HEADER_CLASS}">
                 <img id="${SIDEBAR_TOGGLE_ID}" class="${SIDEBAR_TOGGLE_CLASS}" src="img/ai4.png" title="切换侧边栏">
                 <h3 class="${MODAL_TITLE_CLASS}">自定义提示词</h3>
+                <div class="prompt-injector-toggle-container" title="开启后总结内容将被注入到上下文中">
+                    <label class="prompt-injector-toggle-switch">
+                        <input type="checkbox" id="prompt-injector-enabled-toggle">
+                        <span class="prompt-injector-toggle-slider"></span>
+                    </label>
+                </div>
                 <div id="prompt-injector-migrate-btn" class="${MODAL_CLOSE_X_CLASS}" title="总结迁移"><i class="fa-solid fa-right-left"></i></div>
                 <div class="${MODAL_CLOSE_X_CLASS}"><i class="fa-solid fa-xmark"></i></div>
             </div>
@@ -167,6 +190,20 @@ function ensureModalStructure() {
     modalElement.querySelector('#prompt-injector-migrate-btn').addEventListener('click', handleOpenMigrationModal);
     modalElement.querySelector(`.${SIDEBAR_TOGGLE_CLASS}`).addEventListener('click', () => {
         modalDialogElement.classList.toggle('sidebar-closed');
+    });
+    
+    // --- Enable/Disable Toggle Listener ---
+    modalElement.querySelector('#prompt-injector-enabled-toggle').addEventListener('change', (e) => {
+        extension_settings[pluginName].enabled = e.target.checked;
+        saveSettingsDebounced();
+        applyOrClearCustomPrompt();
+        
+        // Show toast notification
+        if (e.target.checked) {
+            toastr.success('总结注入已开启');
+        } else {
+            toastr.info('总结注入已关闭');
+        }
     });
     modalElement.addEventListener('click', (e) => {
         if (e.target === modalElement) {
@@ -427,7 +464,17 @@ async function openPromptModal() {
 
     // Ensure settings object exists
     if (!extension_settings[pluginName]) {
-        extension_settings[pluginName] = { preset: '' };
+        extension_settings[pluginName] = { preset: '', enabled: true };
+    }
+    // Ensure enabled property exists for existing settings
+    if (extension_settings[pluginName].enabled === undefined) {
+        extension_settings[pluginName].enabled = true;
+    }
+    
+    // Set the toggle switch state based on saved settings
+    const enabledToggle = modalElement.querySelector('#prompt-injector-enabled-toggle');
+    if (enabledToggle) {
+        enabledToggle.checked = extension_settings[pluginName].enabled;
     }
     
     // Immediately render the current chat's prompt editor
